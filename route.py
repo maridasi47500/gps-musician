@@ -72,6 +72,8 @@ class Route():
         self.set_redirect("/sign_in")
 
         return self.render_figure.render_redirect()
+    def foto(self,search):
+        return self.render_figure.render_figure("welcome/foto.html")
     def voir(self,search):
         self.render_figure.set_param("lat",search["lat"][0])
         self.render_figure.set_param("lon",search["lon"][0])
@@ -509,6 +511,7 @@ class Route():
             path=path.split("?")[0]
             print("link route ",path)
             ROUTES={
+            '^/foto$': self.foto,
             '^/voir$': self.voir,
             '^/poster1msg$': self.poster1msg,
             '^/ajouter1chanson$': self.ajouter1chanson,

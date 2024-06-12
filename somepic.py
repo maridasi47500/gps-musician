@@ -10,19 +10,11 @@ class Somepic(Model):
         self.cur=self.con.cursor()
         self.cur.execute("""create table if not exists somepic(
         id integer primary key autoincrement,
-        member_id integer,
-            name text,
-            title text,
-            post_id integer,
-            user_id integer
-                    );""")
+        name text,
+            pic text
+    , MyTimestamp DATETIME DEFAULT CURRENT_TIMESTAMP                );""")
         self.con.commit()
         #self.con.close()
-    def findallpicpost(self,wow):
-        self.cur.execute("select * from somepic where post_id = ?",(wow,))
-
-        row=self.cur.fetchall()
-        return row
     def getall(self):
         self.cur.execute("select * from somepic")
 
@@ -58,7 +50,7 @@ class Somepic(Model):
         print(myhash,myhash.keys())
         myid=None
         try:
-          self.cur.execute("insert into somepic (title,member_id,name,post_id,user_id) values (:title,:member_id,:name,:post_id,:user_id)",myhash)
+          self.cur.execute("insert into somepic (name,pic) values (:name,:pic)",myhash)
           self.con.commit()
           myid=str(self.cur.lastrowid)
         except Exception as e:

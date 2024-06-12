@@ -8,6 +8,10 @@ $ python3 addinstrument.py
 ```
 - lancer (optionnel):
 ```
+$ python3 chercherimage.py
+```
+- lancer (optionnel):
+```
 $ python3 addcountry.py
 ```
 -lancer
